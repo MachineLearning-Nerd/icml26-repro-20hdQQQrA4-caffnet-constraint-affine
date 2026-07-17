@@ -1,0 +1,16 @@
+{
+  "c3_constraint_adherence": {
+    "ok": true,
+    "max_residual": 2.6711965972481266e-13,
+    "n_instances": 2000
+  },
+  "rank_deficient": {
+    "ok": true
+  },
+  "neg_controls": {
+    "ok": true,
+    "plain": 3.2074030008755545,
+    "wrong_pinv": 16.7677048689479,
+    "infeasible": 1.7865928131456834
+  }
+}
