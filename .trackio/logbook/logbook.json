@@ -12,7 +12,7 @@
     "icml2026-repro",
     "paper-20hdQQQrA4"
   ],
-  "updated_at": "2026-07-19T10:53:42+00:00",
+  "updated_at": "2026-07-19T10:53:54+00:00",
   "root": {
     "slug": "index",
     "title": "Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)",
@@ -75,5 +75,5 @@
     ]
   },
   "agent_view_tokens": 6792,
-  "revision": "1784458422633355000"
+  "revision": "1784458434034227000"
 }

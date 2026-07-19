@@ -434,10 +434,60 @@ def train_scenario_b(method, seed, epochs=10_000, log=print, h_scale=1.0):
     return res
 
 
+
+def density_study(widths=(25, 50, 100, 200, 400), seeds=(0, 1, 2),
+                  n_train=1000, epochs=20_000, log=print):
+    """C3 universal-approximation evidence: dense-data width scaling.
+
+    UA is an approximation statement, so the study removes the sample
+    bottleneck (n=1000 dense training points instead of the paper's 50),
+    trains CAffNet at increasing widths, and measures the SUP-NORM
+    approximation error on a dense 4000-point grid. Since the target is
+    feasible (bracketed by the constraints), clamp(MLP) inherits the MLP's
+    universal approximation; the executed sweep must show sup error
+    decreasing with width while violations stay exactly zero."""
+    x_tr = np.linspace(-2, 2, n_train)
+    x_te = np.linspace(-2, 2, 4000)
+    lo_tr, hi_tr = scenario_a_bounds(x_tr)
+    lo_te, hi_te = scenario_a_bounds(x_te)
+    X = torch.tensor(x_tr[:, None]); Y = torch.tensor(target_f(x_tr)[:, None])
+    LO, HI = torch.tensor(lo_tr[:, None]), torch.tensor(hi_tr[:, None])
+    Xt, Yt = torch.tensor(x_te[:, None]), torch.tensor(target_f(x_te)[:, None])
+    LOt, HIt = torch.tensor(lo_te[:, None]), torch.tensor(hi_te[:, None])
+    rows = []
+    for width in widths:
+        per_seed = []
+        for seed in seeds:
+            net = MLP(1, 1, width=width, seed=seed).double()
+            opt = torch.optim.Adam(net.parameters(), lr=3e-4)
+            sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, epochs)
+            t0 = time.time()
+            for _ in range(epochs):
+                opt.zero_grad()
+                y = torch.clamp(net(X), LO, HI)
+                ((y - Y) ** 2).mean().backward()
+                opt.step(); sched.step()
+            with torch.no_grad():
+                yt = torch.clamp(net(Xt), LOt, HIt)
+                sup = float((yt - Yt).abs().max())
+                mse = float(((yt - Yt) ** 2).mean())
+                viol = float(a_violation(yt, LOt, HIt).max())
+            per_seed.append({"seed": seed, "sup_error": sup, "mse": mse,
+                             "violation_max": viol,
+                             "train_seconds": round(time.time() - t0, 1)})
+        best = min(s["sup_error"] for s in per_seed)
+        rows.append({"width": width, "per_seed": per_seed,
+                     "best_sup_error": best,
+                     "mean_sup_error": sum(s["sup_error"] for s in per_seed) / len(per_seed)})
+        log(f"[D] width {width}: best sup {best:.5f} "
+            f"viol {max(s['violation_max'] for s in per_seed):.1f}")
+    return rows
+
+
 # ------------------------------------------------------------------- driver
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--part", choices=["a", "b", "btight", "widths", "bench", "all"],
+    ap.add_argument("--part", choices=["a", "b", "btight", "widths", "density", "bench", "all"],
                     default="all")
     ap.add_argument("--seeds", type=int, default=5)
     ap.add_argument("--epochs-a", type=int, default=50_000)
@@ -471,6 +521,8 @@ def main():
             rows.append(r)
             print("[W]", json.dumps(r), flush=True)
         report["width_sweep"] = rows
+    if args.part in ("density", "all"):
+        report["density_study"] = density_study()
     if args.part in ("b", "all"):
         rows = []
         for method in ("NN", "OrthProj", "ParProj", "CAffNet"):

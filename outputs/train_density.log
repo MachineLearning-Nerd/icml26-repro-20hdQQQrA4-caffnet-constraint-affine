@@ -1,0 +1,7 @@
+scenario A constraint audit: {"min_gap_upper_minus_lower": 0.0, "target_below_upper": true, "target_above_lower": true}
+[D] width 25: best sup 0.01998 viol 0.0
+[D] width 50: best sup 0.01937 viol 0.0
+[D] width 100: best sup 0.00868 viol 0.0
+[D] width 200: best sup 0.00966 viol 0.0
+[D] width 400: best sup 0.01343 viol 0.0
+wrote caffnet_train_report.json
