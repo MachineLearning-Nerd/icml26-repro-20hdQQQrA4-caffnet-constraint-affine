@@ -1,0 +1,8 @@
+{
+  "theta_gradient_nonzero_all_seeds": true,
+  "phi_gradient_nonzero_all_seeds": true,
+  "joint_constraint_residual_below_1e-12": true,
+  "joint_gap_below_1e-3_all_seeds": true,
+  "posthoc_gap_above_0_4_all_seeds": true,
+  "fixed_in_loop_gap_below_1e-3_all_seeds": true
+}
