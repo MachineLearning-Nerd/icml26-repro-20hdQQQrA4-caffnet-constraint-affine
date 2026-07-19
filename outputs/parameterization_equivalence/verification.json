@@ -1,0 +1,8 @@
+{
+  "paired_output_error_below_1e-12": true,
+  "feasibility_residual_below_1e-10": true,
+  "gradient_identity_exact": true,
+  "trajectory_error_below_1e-12": true,
+  "input_dependent_equivalence_below_1e-12": true,
+  "restricted_capacity_counterexample_present": true
+}

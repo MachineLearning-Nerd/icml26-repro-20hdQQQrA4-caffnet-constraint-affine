@@ -15,5 +15,6 @@
   "private": false,
   "title": "Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)",
   "artifacts_bucket": "DineshAI/20hdQQQrA4-artifacts",
-  "last_page": "claim-2-joint-optimization"
+  "last_page": "claim-2-joint-optimization",
+  "local_dashboards": {}
 }

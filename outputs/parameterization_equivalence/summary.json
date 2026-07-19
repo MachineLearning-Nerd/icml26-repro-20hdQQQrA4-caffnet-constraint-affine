@@ -1,0 +1,209 @@
+{
+  "experiment": "CAffNet Eq. (4) parameterization equivalence adversarial audit",
+  "identity": "P(f,w)=A^dagger b+(I-A^dagger A)(f+w)=Proj_A,b(g) for g=f+w",
+  "assumptions": [
+    "The same pointwise A(x), b(x), Moore-Penrose pseudoinverse, and affine-subset selection are used in both parameterizations.",
+    "For exact feasibility, b(x) lies in range(A(x)); otherwise both forms produce the same least-squares affine output but cannot satisfy an empty affine set.",
+    "Representational equivalence requires the comparison network class G to contain the sum class F+W, or to be sufficiently expressive to represent g=f+w.",
+    "The result is pointwise and remains algebraically true for input-dependent and rank-deficient A(x); rank changes can make the shared pseudoinverse map discontinuous."
+  ],
+  "configuration": {
+    "output_dir": "outputs/parameterization_equivalence",
+    "seed": 20260719,
+    "cases": 500
+  },
+  "environment": {
+    "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "dependencies": "Python standard library only"
+  },
+  "runtime_seconds": 2.737152417001198,
+  "randomized": {
+    "cases": 500,
+    "dimensions": {
+      "rows": [
+        1,
+        10
+      ],
+      "columns": [
+        2,
+        8
+      ]
+    },
+    "ranks": [
+      1,
+      8
+    ],
+    "redundant_cases": 388,
+    "paired_output_error": {
+      "mean": 1.4575146645157133e-16,
+      "max": 1.9984014443252818e-15,
+      "min": 0.0
+    },
+    "consistent_feasibility_residual": {
+      "mean": 4.470937509104545e-16,
+      "max": 1.4210854715202004e-14,
+      "min": 0.0
+    },
+    "moore_penrose_residual": {
+      "mean": 3.034256873535313e-16,
+      "max": 7.105427357601002e-15,
+      "min": 0.0
+    },
+    "representable_target_roundtrip_error": {
+      "mean": 1.0674187228554288e-16,
+      "max": 9.992007221626409e-16,
+      "min": 0.0
+    },
+    "f_vs_w_gradient_error": {
+      "mean": 0.0,
+      "max": 0.0,
+      "min": 0.0
+    },
+    "finite_difference_error": {
+      "mean": 2.6082186517690805e-10,
+      "max": 1.3785650399000815e-09,
+      "min": 0.0
+    },
+    "scaled_direct_trajectory_error": {
+      "mean": 3.082464838932708e-16,
+      "max": 3.885780586188048e-15,
+      "min": 0.0
+    },
+    "nontrivial_nullspace_cases": 415,
+    "negative_control_fixed_f_difference": {
+      "mean": 0.6196948865837312,
+      "max": 1.239161255274928,
+      "min": 0.008849133921366992
+    },
+    "inconsistent_cases": 127,
+    "inconsistent_paired_error": {
+      "mean": 1.598131076293594e-16,
+      "max": 1.4710455076283324e-15,
+      "min": 0.0
+    },
+    "inconsistent_residual": {
+      "mean": 0.32666576058460695,
+      "max": 0.4877898444130283,
+      "min": 0.2048196620657923
+    }
+  },
+  "input_dependent": {
+    "fixed_rank_max_equivalence_error": 4.440892098500626e-16,
+    "fixed_rank_max_feasibility_residual": 1.7763568394002505e-15,
+    "rank_change_outputs": [
+      {
+        "x": -1.0,
+        "rank": 2,
+        "paired_output": [
+          0.0,
+          1.0
+        ],
+        "single_output": [
+          0.0,
+          1.0
+        ],
+        "equivalence_error": 0.0
+      },
+      {
+        "x": -0.1,
+        "rank": 2,
+        "paired_output": [
+          0.0,
+          1.0
+        ],
+        "single_output": [
+          0.0,
+          1.0
+        ],
+        "equivalence_error": 0.0
+      },
+      {
+        "x": -0.001,
+        "rank": 2,
+        "paired_output": [
+          0.0,
+          1.0
+        ],
+        "single_output": [
+          0.0,
+          1.0
+        ],
+        "equivalence_error": 0.0
+      },
+      {
+        "x": 0.0,
+        "rank": 1,
+        "paired_output": [
+          0.0,
+          0.0
+        ],
+        "single_output": [
+          0.0,
+          0.0
+        ],
+        "equivalence_error": 0.0
+      },
+      {
+        "x": 0.001,
+        "rank": 2,
+        "paired_output": [
+          0.0,
+          1.0
+        ],
+        "single_output": [
+          0.0,
+          1.0
+        ],
+        "equivalence_error": 0.0
+      },
+      {
+        "x": 0.1,
+        "rank": 2,
+        "paired_output": [
+          0.0,
+          1.0
+        ],
+        "single_output": [
+          0.0,
+          1.0
+        ],
+        "equivalence_error": 0.0
+      },
+      {
+        "x": 1.0,
+        "rank": 2,
+        "paired_output": [
+          0.0,
+          1.0
+        ],
+        "single_output": [
+          0.0,
+          1.0
+        ],
+        "equivalence_error": 0.0
+      }
+    ],
+    "rank_change_jump": 1.0
+  },
+  "restricted_capacity_counterexample": {
+    "constraint": "A=[1,0], b=0; null-space output is second coordinate",
+    "single_comparison_class": "g_a(x)=a*x",
+    "two_branch_sum_class": "f_a(x)+w_b(x)=a*x+b*x^2",
+    "best_single_a": -9.145302202670695e-18,
+    "single_class_mse": 0.20401326666666664,
+    "two_branch_parameters": {
+      "a": 0.0,
+      "b": 1.0
+    },
+    "two_branch_mse": 0.0,
+    "interpretation": "w adds capacity only because the restricted single-network class is not closed under sums; a sufficiently expressive g representing f+w removes this difference."
+  },
+  "conclusion": {
+    "strong_representational_reading": "falsified under the stated sum-class assumption: w_phi does not enlarge the feasible output set beyond end-to-end orthogonal projection of g=f+w.",
+    "narrow_posthoc_reading": "not falsified: training an unconstrained f and projecting only after training can be inferior because it optimizes a different objective.",
+    "optimization_dynamics": "not equivalent in general neural parameterizations: separate f_theta and w_phi Jacobians alter conditioning/implicit bias, although direct-vector gradient descent is exactly matched by the single g parameterization after a factor-two learning-rate rescaling.",
+    "capacity_exception": "w_phi can add capacity relative to a fixed restricted base architecture whose function class is not closed under sums; this is an architecture/parameter-budget effect, not a larger affine feasible set created by Eq. (4)."
+  }
+}

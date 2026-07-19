@@ -36,4 +36,40 @@ The independent rerun reproduced every aggregate metric exactly in approximately
 
 **Public evidence branch:** https://github.com/MachineLearning-Nerd/icml26-repro-20hdQQQrA4-caffnet-constraint-affine/tree/claim2-joint-optimization
 
-Artifacts after repository push: `outputs/joint_control/summary.json`, `learning_curves.csv`, `run.log`, `commands.txt`, `verification.log`, and `attempt_report.md`.
+Attempt 2 artifacts: `outputs/joint_control/summary.json`, `learning_curves.csv`, `run.log`, `commands.txt`, `verification.json`, and `attempt_report.md`.
+
+## Attempt 3 — analytic falsification of the strong representational reading
+
+For `N = I - A†A`, Eq. (4) simplifies exactly:
+
+```text
+P(f,w) = f - A†(Af-b) + Nw
+       = A†b + N(f+w).
+```
+
+Setting `g=f+w` gives the ordinary end-to-end orthogonal projection:
+
+```text
+Proj(g) = g - A†(Ag-b) = A†b + Ng = P(f,w).
+```
+
+Therefore, for the same input-dependent `A(x)`, `b(x)`, pseudoinverse, and active affine subset, the trainable-null-space form and an end-to-end orthogonally projected network have exactly the same feasible output class whenever the comparison network can represent the sum class `F+W`.
+
+A deterministic 500-case audit covered output dimensions 2–8, constraint cardinalities 1–10, ranks 1–8, 388 redundant-row cases, 415 nontrivial null spaces, 127 inconsistent systems, 81 input-dependent evaluations, a rank-change construction, finite-difference gradients, optimization trajectories, and a restricted-class counterexample.
+
+| Analytic audit check | Maximum error/result |
+| --- | ---: |
+| `P(f,w)` versus `Proj(f+w)` | `1.9984e-15` |
+| Consistent feasibility residual | `1.4211e-14` |
+| Moore-Penrose residual | `7.1054e-15` |
+| `f` versus `w` output-gradient difference | `0` |
+| Scaled direct-vector trajectory difference | `3.8858e-15` |
+| Input-dependent equivalence error | `4.4409e-16` |
+
+**Falsification with qualification:** Eq. (4)'s extra null-space branch does not enlarge the representable feasible output set beyond end-to-end orthogonal projection of a sufficiently expressive `g=f+w`. It can still improve over **posthoc** projection, change optimization conditioning or implicit bias, and add capacity relative to a deliberately restricted fixed-size comparison network.
+
+```bash
+python3 repro/src/run_parameterization_equivalence_stdlib.py --output-dir outputs/parameterization_equivalence --seed 20260719 --cases 500
+```
+
+Attempt 3 artifacts: `outputs/parameterization_equivalence/proof.md`, `summary.json`, `random_cases.csv`, `verification.json`, `run.log`, `commands.txt`, and `attempt_report.md`.

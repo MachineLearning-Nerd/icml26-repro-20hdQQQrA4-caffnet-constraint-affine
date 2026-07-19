@@ -13,7 +13,9 @@
 - Both hidden parameter blocks receive nonzero gradients.
 - Independent rerun reproduced every aggregate metric exactly.
 
-**Verdict-neutral interpretation:** the evidence directly supports joint optimization and superiority over applying projection only after unconstrained training. A fixed orthogonal projection trained end-to-end also reaches the oracle, so the result does not claim that the null-space network is uniquely necessary.
+**Verdict-neutral interpretation:** the evidence directly supports joint optimization and superiority over applying projection only after unconstrained training. A fixed orthogonal projection trained end-to-end also reaches the oracle.
+
+**Attempt 3 analytic result:** `P(f,w)=A†b+(I-A†A)(f+w)=Proj(f+w)`. Therefore, when a comparison network can represent `g=f+w`, the learned null-space branch does not enlarge the feasible output class beyond end-to-end orthogonal projection. A 500-case audit confirms the identity within `2.0e-15` across rank-deficient, redundant, inconsistent, and input-dependent systems. This falsifies the strong representational reading while preserving narrower benefits over posthoc projection and possible optimization/capacity effects for restricted architectures.
 
 ## Scope & cost
 | | This reproduction | Full replication |

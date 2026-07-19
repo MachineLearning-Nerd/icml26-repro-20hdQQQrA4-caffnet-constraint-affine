@@ -47,6 +47,27 @@ python3 repro/src/run_joint_control_stdlib.py \
 - Unconstrained constraint residual: `1.0103`.
 - Independent rerun reproduced all aggregate metrics exactly in approximately 14 seconds on an Apple M2 CPU.
 
+## C2 analytic falsification/qualification
+
+Eq. (4) has the exact identity
+
+```text
+P(f,w) = A†b + (I-A†A)(f+w) = Proj(f+w).
+```
+
+Thus, under the explicit assumption that the comparison network can represent `g=f+w`, the learned null-space branch does not enlarge the feasible output class beyond end-to-end orthogonal projection. This strong representational reading is falsified while the narrower advantage over posthoc projection remains supported.
+
+The deterministic audit covers 500 systems across dimensions, ranks, redundant and inconsistent constraints, input-dependent matrices, finite-difference gradients, and optimization trajectories. The maximum paired output error is `1.9984e-15`; output-space gradients for `f` and `w` are identical; scaled direct-vector trajectories agree within `3.8858e-15`.
+
+```bash
+python3 repro/src/run_parameterization_equivalence_stdlib.py \
+  --output-dir outputs/parameterization_equivalence \
+  --seed 20260719 \
+  --cases 500
+```
+
+The qualification is important: separate branches may still alter neural optimization and can add capacity relative to a restricted comparison architecture that is not closed under sums.
+
 ## Scope & honest disclosures
 
 - The new C2 experiment is a substantive reduced mechanism reproduction, not the unreleased paper benchmark.
