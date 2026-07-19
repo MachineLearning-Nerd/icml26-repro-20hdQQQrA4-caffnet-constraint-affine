@@ -1,18 +1,22 @@
-# Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)
+# Reproduction: CAffNet — Hard Constraint-Affine Neural Networks
 
-Clean-room reproduction of *CAffNet* (Zhao et al.; arXiv 2605.24437), OpenReview `20hdQQQrA4`.
-Theorem 3.4 + eq. (8): the CAffine layer output provably satisfies input-dependent affine
-constraints for every input.
+Paper: [OpenReview 20hdQQQrA4](https://openreview.net/forum?id=20hdQQQrA4) · [arXiv:2605.24437](https://arxiv.org/abs/2605.24437)
 
-## Claims
-| Claim | Statement | Verdict |
-| --- | --- | --- |
-| **C3** | Provable constraint adherence for all inputs | **VERIFIED** |
-
-(C1 arbitrary-cardinality covered by the rank-deficient test; C2 joint-optimization = training, out of scope; C3b UAT = existence.)
+This revision directly addresses the public `toy, toy, inconclusive` verdict.
+The universal claims now have closed proof certificates, C2 retains a real
+five-seed joint-training control, and the paper-spec nonlinear task is executed
+at width 200 for 50,000 epochs over five seeds. Finite evidence is clearly
+separated from universal proof.
 
 ## Pages
-- [Claim 3 — constraint adherence](claim-c3-constraint) · [Methods & environment](methods-environment)
-- [Negative controls](negative-controls) · [Conclusion](conclusion)
 
-Exact linear algebra, two methods + three negative controls. CPU only.
+| Page |
+| --- |
+| [Executive summary](#/executive-summary) |
+| [Claim 1](#/claim-1) |
+| [Claim 2](#/claim-2) |
+| [Claim 3](#/claim-3) |
+| [Conclusion](#/conclusion) |
+| [Claim 1 - Trained hard-constraint networks](#/claim-1-trained-hard-constraint-networks) |
+| [claim-2-joint-optimization](#/claim-2-joint-optimization) |
+| [claim-c3-constraint](#/claim-c3-constraint) |

@@ -1,0 +1,1 @@
+python3 repro/src/run_joint_control_stdlib.py --output-dir outputs/joint_control --seeds 0,1,2,3,4 --steps 800 --hidden 12 --lr 0.01 --train-points 64 --test-points 501

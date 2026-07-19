@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAffNet theorem and neural audit</title>
+  <style>
+    :root { --ink:#17232c; --muted:#53616b; --paper:#f5f3ee; --card:#fff; --blue:#195078; --green:#177254; --violet:#664a91; --gold:#ad6b18; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:ui-sans-serif,system-ui,sans-serif; }
+    main { max-width:1200px; margin:auto; padding:42px; }
+    header { border-left:8px solid var(--violet); padding-left:22px; }
+    h1 { margin:0 0 8px; font-size:clamp(2rem,5vw,4rem); line-height:1.02; }
+    h2 { color:var(--blue); margin-top:0; }
+    p { line-height:1.48; }
+    .sub { color:var(--muted); font-size:1.1rem; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:30px 0; }
+    .card { background:var(--card); border:1px solid #d8d3c9; border-radius:14px; padding:23px; box-shadow:0 8px 22px #17232c10; }
+    .metric { font-size:1.9rem; font-weight:850; color:var(--green); }
+    .formula { color:var(--violet); font-weight:760; overflow-wrap:anywhere; }
+    .scope { border-top:5px solid var(--gold); grid-column:1/-1; }
+    code { background:#edf0f3; border-radius:4px; padding:2px 5px; }
+    footer { color:var(--muted); border-top:1px solid #cbc6bc; padding-top:16px; }
+    @media(max-width:850px){ main{padding:24px}.grid{grid-template-columns:1fr}.scope{grid-column:auto} }
+  </style>
+</head>
+<body>
+<main>
+  <header><h1>CAffNet: theorem + neural audit</h1><p class="sub">20hdQQQrA4 · arbitrary constraints · joint null-space training · universal approximation</p></header>
+  <section class="grid">
+    <article class="card"><h2>C1 · Hard feasibility</h2><div class="metric">Arbitrary m</div><p class="formula">minimal face → feasible enumerated candidate</p><p>Penrose algebra closes for every input, rank, and finite constraint count under nonempty-feasibility assumptions.</p></article>
+    <article class="card"><h2>C2 · Joint training</h2><div class="metric">5 seeds</div><p class="formula">dP/df = dP/dw = I-A†A</p><p>Both parameter paths receive gradients; learned null-space choice is load-bearing and hard-feasible.</p></article>
+    <article class="card"><h2>C3 · UAT</h2><div class="metric">All finite p≥1</div><p class="formula">error ≤ (n+1)·base error</p><p>An independent Euclidean-projection candidate proof transfers underlying density while C1 preserves adherence.</p></article>
+    <article class="card scope"><h2>Direct neural evidence</h2><p>Paper-spec width-200 Scenario A: five seeds, 50,000 epochs, mean MSE 0.00299 versus 0.0020±0.0032, zero CAffNet violations. Dimension-matched solver and non-monotone width sweep are retained with their limitations, not promoted into universal evidence.</p></article>
+  </section>
+  <footer>23/23 tests pass · all three proof DAGs valid · paper hash pinned · CPU reproduction</footer>
+</main>
+</body>
+</html>

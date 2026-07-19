@@ -1,0 +1,7 @@
+scenario A constraint audit: {"min_gap_upper_minus_lower": 0.0, "target_below_upper": true, "target_above_lower": true}
+[W] {"method": "CAffNet", "seed": 0, "width": 25, "train_seconds": 13.4, "test_mse": 0.004376145084091879, "train_mse": 2.5649623540917234e-05, "test_violation_max": 0.0, "test_violation_mean": 0.0, "train_violation_max": 0.0}
+[W] {"method": "CAffNet", "seed": 0, "width": 50, "train_seconds": 15.4, "test_mse": 0.00451943617810004, "train_mse": 0.005372813223759853, "test_violation_max": 0.0, "test_violation_mean": 0.0, "train_violation_max": 0.0}
+[W] {"method": "CAffNet", "seed": 0, "width": 100, "train_seconds": 18.4, "test_mse": 0.0037441840603707464, "train_mse": 2.229597200623234e-05, "test_violation_max": 0.0, "test_violation_mean": 0.0, "train_violation_max": 0.0}
+[W] {"method": "CAffNet", "seed": 0, "width": 200, "train_seconds": 34.6, "test_mse": 0.006605875469199176, "train_mse": 0.005371946907737436, "test_violation_max": 0.0, "test_violation_mean": 0.0, "train_violation_max": 0.0}
+[W] {"method": "CAffNet", "seed": 0, "width": 400, "train_seconds": 63.4, "test_mse": 0.002748199027538405, "train_mse": 5.468163958246664e-07, "test_violation_max": 0.0, "test_violation_mean": 0.0, "train_violation_max": 0.0}
+wrote caffnet_train_report.json

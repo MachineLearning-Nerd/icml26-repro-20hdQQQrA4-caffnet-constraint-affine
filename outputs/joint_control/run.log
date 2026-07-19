@@ -1,0 +1,374 @@
+{
+  "experiment": "CAffNet fully-trainable joint optimization on rotating safety-control affine faces",
+  "paper_anchor": "Section 3.2 Eq. (4) joint optimization; Section 4.3 a-posteriori projection comparison",
+  "fidelity": {
+    "matched": [
+      "fully trainable hidden and output parameters",
+      "separate jointly optimized f_theta and w_phi networks",
+      "input-dependent affine constraints",
+      "posthoc fixed projection comparison",
+      "fixed projection trained end-to-end adversarial control",
+      "multiple seeds and exact feasibility checks"
+    ],
+    "deviations": [
+      "independent synthetic rotating safety boundary rather than unreleased robot/control data",
+      "equality face represented as two one-sided inequalities rather than 11/13 paper inequalities",
+      "one hidden layer of reduced width rather than paper's three 200-unit layers",
+      "local CPU rather than V100"
+    ]
+  },
+  "configuration": {
+    "output_dir": "outputs/joint_control",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "steps": 800,
+    "hidden": 12,
+    "lr": 0.01,
+    "train_points": 64,
+    "test_points": 501,
+    "trainable_parameters_per_network": 62,
+    "constraint": "n(x)^T y = 0.18 sin(2 pi x), encoded as two one-sided inequalities",
+    "task": "anisotropic control tracking on an input-dependent rotating safety boundary"
+  },
+  "environment": {
+    "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "dependencies": "Python standard library only"
+  },
+  "runtime_seconds": 13.653853292000349,
+  "runs": [
+    {
+      "seed": 0,
+      "initial_gradient_norms": {
+        "theta": {
+          "hidden": 3.4914965436740855,
+          "output": 5.203849663140276,
+          "total": 6.2666258409971505
+        },
+        "phi": {
+          "hidden": 3.47798114361714,
+          "output": 6.68695824566347,
+          "total": 7.5373578536913755
+        },
+        "posthoc_theta": {
+          "hidden": 2.5380888604143554,
+          "output": 2.361775676105737,
+          "total": 3.466969773102176
+        },
+        "fixed_in_loop_theta": {
+          "hidden": 1.9596248454518743,
+          "output": 3.3832872229514765,
+          "total": 3.9098288924068014
+        }
+      },
+      "oracle_objective": 0.6377572651076231,
+      "joint": {
+        "objective": 0.6378353193140063,
+        "objective_gap": 7.805420638318239e-05,
+        "mse_to_oracle": 1.9778185889585964e-05,
+        "max_constraint_residual": 2.7755575615628914e-16
+      },
+      "joint_w_ablated": {
+        "objective": 1.3732071462371565,
+        "objective_gap": 0.7354498811295334,
+        "mse_to_oracle": 0.17105942816628877,
+        "max_constraint_residual": 3.0531133177191805e-16,
+        "mse_to_joint": 0.1709492813625985
+      },
+      "posthoc_fixed_orthogonal": {
+        "objective": 1.0679085996077757,
+        "objective_gap": 0.43015133450015264,
+        "mse_to_oracle": 0.122688112038179,
+        "max_constraint_residual": 3.0531133177191805e-16,
+        "unconstrained_objective_before_projection": 0.00013641799889899412,
+        "unconstrained_max_constraint_residual": 1.0130149225067937
+      },
+      "fixed_orthogonal_trained_in_loop": {
+        "objective": 0.6378346387869244,
+        "objective_gap": 7.737367930127359e-05,
+        "mse_to_oracle": 1.809707305757903e-05,
+        "max_constraint_residual": 4.440892098500626e-16
+      }
+    },
+    {
+      "seed": 1,
+      "initial_gradient_norms": {
+        "theta": {
+          "hidden": 3.8150990743308304,
+          "output": 5.811476349658879,
+          "total": 6.951851430346052
+        },
+        "phi": {
+          "hidden": 4.060069587883359,
+          "output": 5.372218790612481,
+          "total": 6.733862175057133
+        },
+        "posthoc_theta": {
+          "hidden": 1.59450630584715,
+          "output": 3.873218410680827,
+          "total": 4.188588212778052
+        },
+        "fixed_in_loop_theta": {
+          "hidden": 1.2956543145259969,
+          "output": 1.532535462927982,
+          "total": 2.006834584085523
+        }
+      },
+      "oracle_objective": 0.6377572651076231,
+      "joint": {
+        "objective": 0.6379267735861934,
+        "objective_gap": 0.0001695084785703349,
+        "mse_to_oracle": 4.154932847998621e-05,
+        "max_constraint_residual": 2.498001805406602e-16
+      },
+      "joint_w_ablated": {
+        "objective": 1.3938383131599348,
+        "objective_gap": 0.7560810480523117,
+        "mse_to_oracle": 0.21110285513993823,
+        "max_constraint_residual": 2.7755575615628914e-16,
+        "mse_to_joint": 0.21109794182439853
+      },
+      "posthoc_fixed_orthogonal": {
+        "objective": 1.068674768737863,
+        "objective_gap": 0.43091750363023995,
+        "mse_to_oracle": 0.12237152128287214,
+        "max_constraint_residual": 3.3306690738754696e-16,
+        "unconstrained_objective_before_projection": 0.0007128337275820598,
+        "unconstrained_max_constraint_residual": 1.0016844856733003
+      },
+      "fixed_orthogonal_trained_in_loop": {
+        "objective": 0.6378638875144351,
+        "objective_gap": 0.00010662240681202917,
+        "mse_to_oracle": 2.4738209354284474e-05,
+        "max_constraint_residual": 3.885780586188048e-16
+      }
+    },
+    {
+      "seed": 2,
+      "initial_gradient_norms": {
+        "theta": {
+          "hidden": 4.509369754645109,
+          "output": 5.578278638143739,
+          "total": 7.172977634767785
+        },
+        "phi": {
+          "hidden": 2.9647153047865036,
+          "output": 6.046959401338571,
+          "total": 6.73463100992714
+        },
+        "posthoc_theta": {
+          "hidden": 1.720191067339487,
+          "output": 3.2398178072106742,
+          "total": 3.6681707610298
+        },
+        "fixed_in_loop_theta": {
+          "hidden": 1.9470461940120345,
+          "output": 5.151302404074939,
+          "total": 5.506986956571169
+        }
+      },
+      "oracle_objective": 0.6377572651076231,
+      "joint": {
+        "objective": 0.6378750413940096,
+        "objective_gap": 0.00011777628638653947,
+        "mse_to_oracle": 2.9470337580775204e-05,
+        "max_constraint_residual": 2.914335439641036e-16
+      },
+      "joint_w_ablated": {
+        "objective": 1.6714101533005705,
+        "objective_gap": 1.0336528881929474,
+        "mse_to_oracle": 0.25455233875509725,
+        "max_constraint_residual": 2.498001805406602e-16,
+        "mse_to_joint": 0.25456754283593747
+      },
+      "posthoc_fixed_orthogonal": {
+        "objective": 1.0686360167988285,
+        "objective_gap": 0.4308787516912054,
+        "mse_to_oracle": 0.12278324359365457,
+        "max_constraint_residual": 3.0531133177191805e-16,
+        "unconstrained_objective_before_projection": 9.654872991810844e-05,
+        "unconstrained_max_constraint_residual": 1.0075042122941367
+      },
+      "fixed_orthogonal_trained_in_loop": {
+        "objective": 0.6380700486472817,
+        "objective_gap": 0.00031278353965857875,
+        "mse_to_oracle": 7.667583617189688e-05,
+        "max_constraint_residual": 4.735795089416683e-16
+      }
+    },
+    {
+      "seed": 3,
+      "initial_gradient_norms": {
+        "theta": {
+          "hidden": 3.796652484205,
+          "output": 7.611688510848556,
+          "total": 8.506019754973764
+        },
+        "phi": {
+          "hidden": 5.019713349041187,
+          "output": 7.798749056504009,
+          "total": 9.274589422333717
+        },
+        "posthoc_theta": {
+          "hidden": 2.9764281514257984,
+          "output": 5.860203701152639,
+          "total": 6.572755279150676
+        },
+        "fixed_in_loop_theta": {
+          "hidden": 2.5495349452432734,
+          "output": 2.3447917927989304,
+          "total": 3.4638384761119916
+        }
+      },
+      "oracle_objective": 0.6377572651076231,
+      "joint": {
+        "objective": 0.6378796470788737,
+        "objective_gap": 0.0001223819712505847,
+        "mse_to_oracle": 3.362221188822427e-05,
+        "max_constraint_residual": 4.163336342344337e-16
+      },
+      "joint_w_ablated": {
+        "objective": 1.3360037545716645,
+        "objective_gap": 0.6982464894640414,
+        "mse_to_oracle": 0.19960725489871609,
+        "max_constraint_residual": 4.718447854656915e-16,
+        "mse_to_joint": 0.19985401400909997
+      },
+      "posthoc_fixed_orthogonal": {
+        "objective": 1.0660362414298115,
+        "objective_gap": 0.42827897632218836,
+        "mse_to_oracle": 0.12250785178009482,
+        "max_constraint_residual": 3.608224830031759e-16,
+        "unconstrained_objective_before_projection": 0.0003959950494133961,
+        "unconstrained_max_constraint_residual": 1.0290319082367216
+      },
+      "fixed_orthogonal_trained_in_loop": {
+        "objective": 0.6378033243800444,
+        "objective_gap": 4.605927242129493e-05,
+        "mse_to_oracle": 9.954108644127303e-06,
+        "max_constraint_residual": 5.273559366969494e-16
+      }
+    },
+    {
+      "seed": 4,
+      "initial_gradient_norms": {
+        "theta": {
+          "hidden": 1.940625963151281,
+          "output": 3.8215208054526584,
+          "total": 4.286029677377932
+        },
+        "phi": {
+          "hidden": 3.7246033170847395,
+          "output": 3.626075140928193,
+          "total": 5.198181489453408
+        },
+        "posthoc_theta": {
+          "hidden": 3.216265205159352,
+          "output": 5.003459299018552,
+          "total": 5.948022093675674
+        },
+        "fixed_in_loop_theta": {
+          "hidden": 1.574282380506974,
+          "output": 3.064187531817895,
+          "total": 3.4449398026268834
+        }
+      },
+      "oracle_objective": 0.6377572651076231,
+      "joint": {
+        "objective": 0.6378021282810664,
+        "objective_gap": 4.486317344332136e-05,
+        "mse_to_oracle": 1.0219985687532003e-05,
+        "max_constraint_residual": 2.498001805406602e-16
+      },
+      "joint_w_ablated": {
+        "objective": 1.1656680303407811,
+        "objective_gap": 0.527910765233158,
+        "mse_to_oracle": 0.1300656977685642,
+        "max_constraint_residual": 2.220446049250313e-16,
+        "mse_to_joint": 0.13006521069475044
+      },
+      "posthoc_fixed_orthogonal": {
+        "objective": 1.0697676575635517,
+        "objective_gap": 0.43201039245592865,
+        "mse_to_oracle": 0.12306867956429991,
+        "max_constraint_residual": 2.7755575615628914e-16,
+        "unconstrained_objective_before_projection": 0.00024743026744298245,
+        "unconstrained_max_constraint_residual": 1.0001621823471802
+      },
+      "fixed_orthogonal_trained_in_loop": {
+        "objective": 0.6378010457356822,
+        "objective_gap": 4.378062805909799e-05,
+        "mse_to_oracle": 1.0835863848850378e-05,
+        "max_constraint_residual": 4.440892098500626e-16
+      }
+    }
+  ],
+  "aggregate": {
+    "joint_objective_gap": {
+      "mean": 0.00010651682320679256,
+      "std": 4.232663502947344e-05,
+      "min": 4.486317344332136e-05,
+      "max": 0.0001695084785703349
+    },
+    "posthoc_objective_gap": {
+      "mean": 0.430447391719943,
+      "std": 0.001236100574250461,
+      "min": 0.42827897632218836,
+      "max": 0.43201039245592865
+    },
+    "fixed_in_loop_objective_gap": {
+      "mean": 0.00011732390525045488,
+      "std": 0.00010040146693897997,
+      "min": 4.378062805909799e-05,
+      "max": 0.00031278353965857875
+    },
+    "posthoc_over_joint_objective_ratio": {
+      "mean": 1.6746595736358727,
+      "std": 0.001978006877693406,
+      "min": 1.6712184599581625,
+      "max": 1.67727200981074
+    },
+    "w_ablation_objective_increase": {
+      "mean": 0.7501616975911916,
+      "std": 0.1628960554416055,
+      "min": 0.5278659020597147,
+      "max": 1.033535111906561
+    },
+    "joint_max_constraint_residual": {
+      "mean": 2.9698465908722935e-16,
+      "std": 6.181460191301305e-17,
+      "min": 2.498001805406602e-16,
+      "max": 4.163336342344337e-16
+    },
+    "unconstrained_max_constraint_residual": {
+      "mean": 1.0102795422116266,
+      "std": 0.010421822878680851,
+      "min": 1.0001621823471802,
+      "max": 1.0290319082367216
+    },
+    "theta_initial_hidden_gradient": {
+      "mean": 3.510648764001261,
+      "std": 0.8529091556918655,
+      "min": 1.940625963151281,
+      "max": 4.509369754645109
+    },
+    "phi_initial_hidden_gradient": {
+      "mean": 3.8494165404825855,
+      "std": 0.6855958281266605,
+      "min": 2.9647153047865036,
+      "max": 5.019713349041187
+    }
+  },
+  "interpretation_guardrail": "The posthoc baseline matches the paper's narrow comparison. The fixed-in-loop baseline tests and may refute the stronger claim that w_phi is uniquely necessary when f_theta is itself trained through the projection."
+}
+wrote outputs/joint_control/summary.json
+wrote outputs/joint_control/learning_curves.csv
+real 13.73
+user 13.68
+sys 0.02

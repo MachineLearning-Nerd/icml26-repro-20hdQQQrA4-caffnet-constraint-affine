@@ -2,10 +2,18 @@
   "space_id": "DineshAI/20hdQQQrA4",
   "emoji": "🔗",
   "created_at": "2026-07-17T20:15:00+00:00",
-  "paper": {"arxiv_id": "2605.24437", "openreview_id": "20hdQQQrA4", "title": "CAffNet: Hard Constraint-Affine Neural Networks"},
-  "tags": ["icml2026-repro", "paper-20hdQQQrA4"],
+  "paper": {
+    "arxiv_id": "2605.24437",
+    "openreview_id": "20hdQQQrA4",
+    "title": "CAffNet: Hard Constraint-Affine Neural Networks"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-20hdQQQrA4"
+  ],
   "autosync": true,
   "private": false,
-  "title": "Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)",
-  "artifacts_bucket": "DineshAI/20hdQQQrA4-artifacts"
+  "title": "Reproduction: CAffNet - Hard Constraint-Affine Neural Networks",
+  "artifacts_bucket": "DineshAI/20hdQQQrA4-artifacts",
+  "last_page": "conclusion"
 }

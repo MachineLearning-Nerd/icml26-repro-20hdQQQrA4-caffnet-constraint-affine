@@ -1,0 +1,381 @@
+{
+  "paper": "20hdQQQrA4",
+  "paper_title": "CAffNet: Hard Constraint-Affine Neural Networks",
+  "paper_sha256": "33db803823608bdb76db20732f0a3a20aef32c5f4e22f4c4b148a2b7b6da9520",
+  "mode": "universal proof audit plus neural corroboration",
+  "claims": [
+    {
+      "valid": true,
+      "duplicate_ids": [],
+      "missing_dependencies": {},
+      "missing_conclusions": [],
+      "steps": [
+        {
+          "id": "c1-assumptions",
+          "statement": "Fix any input x. Let S(x)={y:A(x)y<=b(x)} be a nonempty polyhedron in R^n_out; m is any positive finite constraint count and A,b are continuous in x.",
+          "depends_on": [],
+          "reference": "Assumption 3.2",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c1-enumeration",
+          "statement": "Gamma contains every row-index subset of cardinality 1 through min(m,n_out), so its finite size is sum_k binomial(m,k) and m is not restricted by n_out.",
+          "depends_on": [
+            "c1-assumptions"
+          ],
+          "reference": "Section 3.1, Equations (2)-(3)",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c1-minimal-face",
+          "statement": "Every nonempty polyhedron has a minimal face F that is an affine space defined by at most n_out linearly independent active input constraints and satisfies F subset S.",
+          "depends_on": [
+            "c1-assumptions"
+          ],
+          "reference": "Definition 3.1; Schrijver (1998), Theorem 8.4; Appendix A",
+          "evidence_type": "imported polyhedral theorem"
+        },
+        {
+          "id": "c1-face-index-present",
+          "statement": "The active index set gamma* defining F has size at most min(m,n_out), hence gamma* belongs to Gamma.",
+          "depends_on": [
+            "c1-enumeration",
+            "c1-minimal-face"
+          ],
+          "reference": "Lemma 3.3 proof",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c1-candidate-identity",
+          "statement": "For P_gamma=f-A_gamma^dagger(A_gamma f-b_gamma)+(I-A_gamma^dagger A_gamma)w, the Penrose identities give A_gamma P_gamma=b_gamma for every f and w whenever the face equations are consistent.",
+          "depends_on": [
+            "c1-face-index-present"
+          ],
+          "reference": "Equation (4); Appendix A, Equations (7)-(10)",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c1-feasible-candidate",
+          "statement": "For gamma*, the equality places P_gamma* in the entire minimal face F, hence in S; the filtered candidate set S_P is nonempty for arbitrary learned f and w.",
+          "depends_on": [
+            "c1-minimal-face",
+            "c1-candidate-identity"
+          ],
+          "reference": "Lemma 3.3",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c1-selection",
+          "statement": "Equation (6) returns f only when f is feasible and otherwise selects from nonempty S_P, so every CAffNet output satisfies all m inequalities.",
+          "depends_on": [
+            "c1-feasible-candidate"
+          ],
+          "reference": "Theorem 3.4; Equations (5)-(6)",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c1-complete",
+          "statement": "Hard constraint satisfaction therefore holds for every input, arbitrary finite cardinality m, redundant or dependent rows, and every rank allowed by Assumption 3.2.",
+          "depends_on": [
+            "c1-selection"
+          ],
+          "reference": "",
+          "evidence_type": "derived"
+        }
+      ],
+      "conclusions": [
+        "c1-complete"
+      ],
+      "claim": "C1",
+      "scope": "every input-dependent nonempty affine-inequality polyhedron under Assumption 3.2, with arbitrary finite m",
+      "proof_mode": "minimal-face existence plus exact Moore-Penrose algebra",
+      "cardinality_controls": {
+        "m=4,n_out=1": 4,
+        "m=13,n_out=5": 2379,
+        "m=7,n_out=7": 127
+      },
+      "finite_experiments": "2,000 random instances and neural tasks are corroboration only"
+    },
+    {
+      "valid": true,
+      "duplicate_ids": [],
+      "missing_dependencies": {},
+      "missing_conclusions": [],
+      "steps": [
+        {
+          "id": "c2-formula",
+          "statement": "For a locally selected sub-constraint, Equation (4) rewrites as P=A^dagger b+N(f_theta+w_phi), with N=I-A^dagger A.",
+          "depends_on": [],
+          "reference": "Equation (4)",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c2-projector",
+          "statement": "The Moore-Penrose identities make N the symmetric idempotent orthogonal projector onto null(A).",
+          "depends_on": [
+            "c2-formula"
+          ],
+          "reference": "standard Moore-Penrose properties",
+          "evidence_type": "imported linear-algebra identity"
+        },
+        {
+          "id": "c2-fixed-projection",
+          "statement": "Setting w_phi=0 recovers the fixed orthogonal projection; a fixed parallel projection likewise commits to a prescribed correction direction.",
+          "depends_on": [
+            "c2-projector"
+          ],
+          "reference": "Section 3.2 discussion after Theorem 3.4",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c2-nullspace-expressivity",
+          "statement": "When rank(A)<n_out, every null-space displacement z is reachable because Nz=z; learned w_phi can therefore choose throughout the affine solution face instead of fixing one projected point or direction.",
+          "depends_on": [
+            "c2-projector",
+            "c2-fixed-projection"
+          ],
+          "reference": "Figure 3; Theorem 3.4 discussion",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c2-gradients",
+          "statement": "Away from candidate-selection ties, dP/df=dP/dw=N. Chain rule therefore sends task gradients into both theta and phi whenever the upstream gradient has a nonzero null-space component.",
+          "depends_on": [
+            "c2-formula",
+            "c2-projector"
+          ],
+          "reference": "Equation (4), differentiated",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c2-joint-training",
+          "statement": "Thus the layer is trainable jointly with both parameter blocks, contains fixed-w orthogonal projection as an explicit special case, and adds an independently parameterized null-space optimization path at rank-deficient faces.",
+          "depends_on": [
+            "c2-nullspace-expressivity",
+            "c2-gradients"
+          ],
+          "reference": "",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c2-complete",
+          "statement": "The architectural claim follows; executed neural controls additionally verify nonzero gradients, a load-bearing learned null-space head, and machine-precision feasibility.",
+          "depends_on": [
+            "c2-joint-training"
+          ],
+          "reference": "",
+          "evidence_type": "derived"
+        }
+      ],
+      "conclusions": [
+        "c2-complete"
+      ],
+      "claim": "C2",
+      "scope": "each differentiable region with a fixed selected candidate; selection boundaries are piecewise-differentiable tie surfaces",
+      "proof_mode": "exact null-space projector algebra plus executed multi-seed neural controls",
+      "exact_rank_deficient_control": {
+        "null_projector": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "upstream_gradient": [
+          1,
+          2,
+          3
+        ],
+        "gradient_to_f": [
+          0,
+          2,
+          3
+        ],
+        "gradient_to_w": [
+          0,
+          2,
+          3
+        ],
+        "null_displacement": [
+          0,
+          5,
+          -7
+        ],
+        "projected_null_displacement": [
+          0,
+          5,
+          -7
+        ],
+        "both_parameter_paths_nonzero": true,
+        "full_null_displacement_recovered": true
+      },
+      "experiment_boundary": "The five-seed reduced control establishes joint training and w_phi ablation value; an end-to-end orthogonal baseline also reaches the oracle, so uniqueness or universal superiority is not claimed."
+    },
+    {
+      "valid": true,
+      "duplicate_ids": [],
+      "missing_dependencies": {},
+      "missing_conclusions": [],
+      "steps": [
+        {
+          "id": "c3-assumptions",
+          "statement": "Let X be compact, S(x)={y:A(x)y<=b(x)} be nonempty with continuous A,b, let the target f_t(x) lie in S(x), and let F_theta be dense in the target ambient class under the pointwise p norm, 1<=p<infinity.",
+          "depends_on": [],
+          "reference": "Theorem 3.5",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-zero-null-network",
+          "statement": "Choose the second network to be w_phi(x)=0 exactly; zero weights realize this continuous function, so no approximation of a changing face-specific null vector is required.",
+          "depends_on": [
+            "c3-assumptions"
+          ],
+          "reference": "",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-architecture-enumerates",
+          "statement": "CAffNet enumerates every active-row subset of size at most n_out and filters Equation (4) candidates by all original inequalities.",
+          "depends_on": [
+            "c3-assumptions"
+          ],
+          "reference": "Equations (2)-(5)",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-hard-feasibility",
+          "statement": "The minimal-face argument of Lemma 3.3 and Theorem 3.4 makes the filtered set nonempty and every Equation (6) output feasible under these same assumptions.",
+          "depends_on": [
+            "c3-architecture-enumerates"
+          ],
+          "reference": "Lemma 3.3; Theorem 3.4",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-euclidean-projection",
+          "statement": "For each x, the nonempty closed convex polyhedron S(x) has a unique Euclidean projection q of f_theta(x), with ||q-f_theta||_2<=||f_t-f_theta||_2.",
+          "depends_on": [
+            "c3-assumptions"
+          ],
+          "reference": "projection theorem for closed convex sets",
+          "evidence_type": "imported convex-analysis theorem"
+        },
+        {
+          "id": "c3-active-subset",
+          "statement": "The projection optimality condition puts f_theta-q in the cone of active constraint normals. Conic Caratheodory selects at most n_out active rows spanning it.",
+          "depends_on": [
+            "c3-euclidean-projection"
+          ],
+          "reference": "polyhedral normal cone and conic Caratheodory theorem",
+          "evidence_type": "imported convex-analysis theorem"
+        },
+        {
+          "id": "c3-projection-is-candidate",
+          "statement": "For that active subset gamma, q satisfies A_gamma q=b_gamma and f_theta-q lies in row(A_gamma); hence q is exactly f_theta-A_gamma^dagger(A_gamma f_theta-b_gamma), the Equation (4) candidate with w_phi=0.",
+          "depends_on": [
+            "c3-zero-null-network",
+            "c3-architecture-enumerates",
+            "c3-active-subset"
+          ],
+          "reference": "",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-feasible-nearest-bound",
+          "statement": "Because q is feasible, q belongs to S_P. Equation (6)'s p-nearest feasible candidate therefore satisfies ||P*-f_theta||_p<=||q-f_theta||_p.",
+          "depends_on": [
+            "c3-projection-is-candidate"
+          ],
+          "reference": "Equations (5)-(6)",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-norm-bound",
+          "statement": "Finite-dimensional norm equivalence and Euclidean projection give ||q-f_theta||_p<=n_out||f_t-f_theta||_p; the conservative factor n_out is valid for every finite p>=1.",
+          "depends_on": [
+            "c3-euclidean-projection"
+          ],
+          "reference": "",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-error-budget",
+          "statement": "Choose f_theta within epsilon/(n_out+1) of f_t. Triangle inequality plus the nearest-candidate and norm bounds gives ||P*-f_t||_p<epsilon uniformly.",
+          "depends_on": [
+            "c3-feasible-nearest-bound",
+            "c3-norm-bound"
+          ],
+          "reference": "",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-uat",
+          "statement": "CAffNet is dense in the feasible target class whenever the underlying f_theta class is dense in the ambient class.",
+          "depends_on": [
+            "c3-error-budget"
+          ],
+          "reference": "Theorem 3.5",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-hard-and-universal",
+          "statement": "Combining Theorem 3.5 with the C1 hard-feasibility certificate gives both universal approximation and constraint adherence for every input.",
+          "depends_on": [
+            "c3-uat",
+            "c3-hard-feasibility"
+          ],
+          "reference": "Theorems 3.4-3.5",
+          "evidence_type": "derived"
+        },
+        {
+          "id": "c3-complete",
+          "statement": "The complete conjunctive challenge claim follows under the paper's stated assumptions.",
+          "depends_on": [
+            "c3-hard-and-universal"
+          ],
+          "reference": "",
+          "evidence_type": "derived"
+        }
+      ],
+      "conclusions": [
+        "c3-complete"
+      ],
+      "claim": "C3",
+      "scope": "Theorem 3.5 for compact X, nonempty continuous polyhedral constraints, feasible targets, and every finite p>=1",
+      "proof_mode": "independent Euclidean-projection proof plus C1 hard-feasibility certificate",
+      "exact_error_budgets": {
+        "epsilon=1/10,n=1": {
+          "epsilon": "1/10",
+          "unconstrained_error": "1/20",
+          "candidate_distance_bound": "1/20",
+          "final_error_bound": "1/10"
+        },
+        "epsilon=1,n=5": {
+          "epsilon": "1",
+          "unconstrained_error": "1/6",
+          "candidate_distance_bound": "5/6",
+          "final_error_bound": "1"
+        },
+        "epsilon=7/3,n=13": {
+          "epsilon": "7/3",
+          "unconstrained_error": "1/6",
+          "candidate_distance_bound": "13/6",
+          "final_error_bound": "7/3"
+        }
+      },
+      "important_strengthening": "w_phi is chosen identically zero, so the proof does not need to approximate a face-specific null-space target and covers the full p range with one conservative norm bound.",
+      "finite_width_sweep": "corroboration only; a finite width sweep is not used to infer density"
+    }
+  ],
+  "all_valid": true
+}

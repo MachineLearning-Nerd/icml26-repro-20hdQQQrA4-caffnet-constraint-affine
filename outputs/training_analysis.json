@@ -1,0 +1,86 @@
+{
+  "paper": "20hdQQQrA4",
+  "source_hashes": {
+    "caffnet_train_a.json": "3a1ea67db821a3c6e1a0885620b5e1ee48a838bd4ed110b3647d417489bff04b",
+    "caffnet_train_b.json": "57ca7d2c72d9e9305c7c7b9a616cb13e4a2b6b0221048108f5625c1203fa4af5",
+    "caffnet_train_btight.json": "89977d2097d217c3b4b28184dde3f981da473d5fbe9b9cfa9064f53000a75187",
+    "caffnet_train_widths.json": "27b1fbef28c2f44cce937bf72c041cae04d2e2136ce7a75b833034e17045bb8f",
+    "joint_control/summary.json": "5c20cc1d299106ef296076205c1c59d3767ef1c6e3eb6c89eede1a1cedc0f87d"
+  },
+  "scenario_a_paper_protocol": {
+    "architecture": "3 hidden ReLU layers, width 200",
+    "train_points": 50,
+    "test_points": 400,
+    "epochs": 50000,
+    "learning_rate": 0.0001,
+    "seeds": 5,
+    "caffnet_test_mse_mean": 0.002989906412409327,
+    "paper_caffnet_ff_mse_mean": 0.002,
+    "paper_caffnet_ff_mse_std": 0.0032,
+    "absolute_mse_difference": 0.0009899064124093268,
+    "within_one_reported_paper_std": true,
+    "caffnet_max_violation": 0.0,
+    "all_caffnet_runs_hard_feasible": true,
+    "all_soft_nn_runs_have_test_violation": true
+  },
+  "scenario_b_paper_dimensions": {
+    "n_out": 5,
+    "n_inequality": 5,
+    "n_equality": 3,
+    "train_points": 1000,
+    "test_points": 1000,
+    "epochs": 10000,
+    "seeds": 5,
+    "mean_objectives": {
+      "NN": -0.06231290023157815,
+      "OrthProj": -0.06773857757319462,
+      "ParProj": -0.06294934297718899,
+      "CAffNet": -0.0649644592129831
+    },
+    "caffnet_max_inequality_violation": 8.881784197001252e-16,
+    "caffnet_max_equality_violation": 4.440892098500626e-15,
+    "all_caffnet_runs_hard_feasible_at_1e-12": true,
+    "qualification": "The paper does not publish its random matrices/seeds; this dimension-matched clean-room instance cannot reproduce Table 3 objective values, and its inequalities are inactive."
+  },
+  "joint_nullspace_control": {
+    "seeds": 5,
+    "joint_objective_gap_mean": 0.00010651682320679256,
+    "posthoc_objective_gap_mean": 0.430447391719943,
+    "fixed_in_loop_objective_gap_mean": 0.00011732390525045488,
+    "w_ablation_objective_increase_mean": 0.7501616975911916,
+    "joint_max_constraint_residual_mean": 2.9698465908722935e-16,
+    "theta_initial_hidden_gradient_mean": 3.510648764001261,
+    "phi_initial_hidden_gradient_mean": 3.8494165404825855,
+    "qualification": "The posthoc baseline matches the paper's narrow comparison. The fixed-in-loop baseline tests and may refute the stronger claim that w_phi is uniquely necessary when f_theta is itself trained through the projection."
+  },
+  "tight_inequality_stress": {
+    "h_scale": 0.25,
+    "seeds": 5,
+    "caffnet_max_inequality_violation": 5.773159728050814e-15,
+    "caffnet_max_equality_violation": 1.1324274851176597e-14,
+    "orthogonal_min_of_seed_max_inequality_violation": 0.8069979689124491,
+    "parallel_min_of_seed_max_inequality_violation": 0.5909483248467287,
+    "all_caffnet_runs_hard_feasible_at_2e-12": true,
+    "all_fixed_projection_runs_violate_inequalities": true,
+    "qualification": "Synthetic h_scale=0.25 stress variant with an LP-certified all-input feasibility guard; activates inequalities absent from the direct clean-room reconstruction and is not the unpublished Table 3 instance."
+  },
+  "width_sweep": {
+    "widths": [
+      25,
+      50,
+      100,
+      200,
+      400
+    ],
+    "test_mse": [
+      0.004376145084091879,
+      0.00451943617810004,
+      0.0037441840603707464,
+      0.006605875469199176,
+      0.002748199027538405
+    ],
+    "all_runs_hard_feasible": true,
+    "monotone_mse_decrease": false,
+    "qualification": "Finite and non-monotone; corroborates feasibility only and is not evidence for universal density."
+  }
+}
