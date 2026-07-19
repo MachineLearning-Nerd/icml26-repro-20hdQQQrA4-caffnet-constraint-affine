@@ -1,5 +1,5 @@
 ---
-title: "Reproduction: CAffNet — Hard Constraint-Affine Neural Networks"
+title: "Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)"
 emoji: 🔗
 colorFrom: yellow
 colorTo: red
@@ -13,6 +13,6 @@ tags:
  - paper-20hdQQQrA4
 ---
 
-# Reproduction: CAffNet — Hard Constraint-Affine Neural Networks
+# Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)
 
 An open experiment logbook, published with [Trackio](https://github.com/gradio-app/trackio).

@@ -1,22 +1,21 @@
-# Reproduction: CAffNet — Hard Constraint-Affine Neural Networks
+# Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)
 
-Paper: [OpenReview 20hdQQQrA4](https://openreview.net/forum?id=20hdQQQrA4) · [arXiv:2605.24437](https://arxiv.org/abs/2605.24437)
+Clean-room reproduction of *CAffNet: Hard Constraint-Affine Neural Networks* (arXiv [2605.24437](https://arxiv.org/abs/2605.24437), OpenReview [`20hdQQQrA4`](https://openreview.net/forum?id=20hdQQQrA4)).
 
-This revision directly addresses the public `toy, toy, inconclusive` verdict.
-The universal claims now have closed proof certificates, C2 retains a real
-five-seed joint-training control, and the paper-spec nonlinear task is executed
-at width 200 for 50,000 epochs over five seeds. Finite evidence is clearly
-separated from universal proof.
+## Claims
+
+| Claim | Evidence status |
+| --- | --- |
+| Existing judged Claim 1 — hard constraint satisfaction | Existing reduced linear-algebra evidence preserved |
+| Existing judged Claim 2 — joint optimization beyond posthoc projection | New fully trainable reduced mechanism reproduction |
+| Existing judged Claim 3 — universal approximation plus constraint adherence | Existing constraint-adherence evidence preserved; universal approximation remains untested |
 
 ## Pages
 
 | Page |
 | --- |
-| [Executive summary](#/executive-summary) |
-| [Claim 1](#/claim-1) |
-| [Claim 2](#/claim-2) |
-| [Claim 3](#/claim-3) |
+| [Claim 2 — Joint optimization](#/claim-2-joint-optimization) |
+| [Claim 3 — Provable constraint adherence](#/claim-c3-constraint) |
+| [Methods & environment](#/methods-environment) |
+| [Negative controls](#/negative-controls) |
 | [Conclusion](#/conclusion) |
-| [Claim 1 - Trained hard-constraint networks](#/claim-1-trained-hard-constraint-networks) |
-| [claim-2-joint-optimization](#/claim-2-joint-optimization) |
-| [claim-c3-constraint](#/claim-c3-constraint) |
