@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "title": "Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)",
+  "emoji": "🔗",
+  "space_id": "DineshAI/20hdQQQrA4",
+  "paper": {
+    "arxiv_id": "2605.24437",
+    "openreview_id": "20hdQQQrA4",
+    "title": "CAffNet: Hard Constraint-Affine Neural Networks"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-20hdQQQrA4"
+  ],
+  "updated_at": "2026-07-22T16:15:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "claim-c3-constraint",
+        "title": "Claim 3 — Provable constraint adherence",
+        "file": "pages/claim-c3-constraint/page.md",
+        "children": []
+      },
+      {
+        "slug": "methods-environment",
+        "title": "Methods & environment",
+        "file": "pages/methods-environment/page.md",
+        "children": []
+      },
+      {
+        "slug": "negative-controls",
+        "title": "Negative controls",
+        "file": "pages/negative-controls/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-caffnet-hard",
+        "title": "Claim 0 — CAffNet hard constraint + universal approx",
+        "file": "pages/claim-caffnet-hard/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-control",
+        "title": "Claim 4 — safety-critical control",
+        "file": "pages/claim-4-control/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-theorem35-exact-bound",
+        "title": "Theorem 3.5 — exact universal-approximation bound",
+        "file": "pages/claim-theorem35-exact-bound/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 1368,
+  "revision": "1784621191277236705"
+}
