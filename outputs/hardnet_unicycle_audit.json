@@ -1,0 +1,17 @@
+{
+  "audit": "independent HardNet-Aff exact-task verification",
+  "audit_passed": true,
+  "checks": {
+    "caffnet_collision_pattern_exact": true,
+    "committed_result_exactly_recomputed": true,
+    "exact_constraint_count": true,
+    "exact_horizon": true,
+    "hardnet_collision_pattern_exact": true,
+    "hardnet_source_is_revision_pinned": true,
+    "official_torch_formula_matches_numpy": true,
+    "primary_audit_all_checks_passed": true,
+    "scope_does_not_claim_goal_arrival": true
+  },
+  "maximum_torch_numpy_delta": 1.3322676295501878e-15,
+  "primary_results_sha256": "3ab373b7ae5af9ff28770585b2950d706df151574d0cb3fd5b4da5c8fd153170"
+}

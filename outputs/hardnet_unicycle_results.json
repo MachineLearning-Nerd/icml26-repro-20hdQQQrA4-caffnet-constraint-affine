@@ -1,0 +1,580 @@
+{
+  "all_checks_passed": true,
+  "attempt_1_paper_x0": {
+    "caffnet": {
+      "collisions": [
+        false,
+        false,
+        false
+      ],
+      "final_goal_distance": 3.0938056297855776,
+      "final_state": [
+        -3.091875210319389,
+        0.10927469380130742,
+        -0.052466185973158996
+      ],
+      "first_collision_steps": [
+        null,
+        null,
+        null
+      ],
+      "max_affine_violation": 1.2939952928614495e-16,
+      "max_control_bound_violation": 0.0,
+      "minimum_polygon_margins": [
+        1.2797056716452964,
+        2.100884067391984,
+        0.15096831917598985
+      ],
+      "minimum_smooth_cbf_values": [
+        1.1221322469709325,
+        1.9245496800864583,
+        1.20050262988336e-06
+      ]
+    },
+    "hardnet": {
+      "collisions": [
+        true,
+        false,
+        true
+      ],
+      "final_goal_distance": 2.8885094369485182,
+      "final_state": [
+        2.8759967286161916,
+        -0.26856951489253345,
+        -0.6203497688798034
+      ],
+      "first_collision_steps": [
+        54,
+        null,
+        39
+      ],
+      "max_affine_violation": 1.9527903967209406,
+      "max_control_bound_violation": 0.0,
+      "minimum_polygon_margins": [
+        -0.27984200355212374,
+        1.5118942243722642,
+        -0.12868127844107402
+      ],
+      "minimum_smooth_cbf_values": [
+        -0.32375199740178007,
+        1.3928382920293783,
+        -0.21216293467173797
+      ]
+    },
+    "nominal": {
+      "collisions": [
+        true,
+        false,
+        true
+      ],
+      "final_goal_distance": 4.203001833361733,
+      "final_state": [
+        4.173635010683929,
+        -0.4959790407219311,
+        -1.2159228271126383
+      ],
+      "first_collision_steps": [
+        53,
+        null,
+        38
+      ],
+      "max_affine_violation": 3.2641632902870503,
+      "max_control_bound_violation": 0.0,
+      "minimum_polygon_margins": [
+        -0.27316924088480643,
+        1.508571213081649,
+        -0.12519019893491157
+      ],
+      "minimum_smooth_cbf_values": [
+        -0.3224899031118822,
+        1.3966893177333644,
+        -0.21176318362243163
+      ]
+    }
+  },
+  "attempt_2_numeric_robustness": {
+    "float32": {
+      "caffnet": {
+        "collisions": [
+          false,
+          false,
+          false
+        ],
+        "final_goal_distance": 3.0938053131103516,
+        "final_state": [
+          -3.091874837875366,
+          0.10927464067935944,
+          -0.05246615409851074
+        ],
+        "first_collision_steps": [
+          null,
+          null,
+          null
+        ],
+        "max_affine_violation": 6.565824151039124e-08,
+        "max_control_bound_violation": 0.0,
+        "minimum_polygon_margins": [
+          1.2797054455935954,
+          2.1008839141242204,
+          0.15096810235530178
+        ],
+        "minimum_smooth_cbf_values": [
+          1.1221318275004866,
+          1.924549486426804,
+          1.1831790448058044e-06
+        ]
+      },
+      "hardnet": {
+        "collisions": [
+          true,
+          false,
+          true
+        ],
+        "final_goal_distance": 2.8885107040405273,
+        "final_state": [
+          2.875997543334961,
+          -0.2685716450214386,
+          -0.620344877243042
+        ],
+        "first_collision_steps": [
+          54,
+          null,
+          39
+        ],
+        "max_affine_violation": 1.9527910947799683,
+        "max_control_bound_violation": 0.0,
+        "minimum_polygon_margins": [
+          -0.279842439314723,
+          1.5118941875748337,
+          -0.1286806365899742
+        ],
+        "minimum_smooth_cbf_values": [
+          -0.32375206646618837,
+          1.3928380987925266,
+          -0.21216274199185364
+        ]
+      }
+    },
+    "row_permutation_runs": [
+      {
+        "caffnet": {
+          "collisions": [
+            false,
+            false,
+            false
+          ],
+          "final_goal_distance": 3.0938056297855776,
+          "final_state": [
+            -3.091875210319389,
+            0.10927469380130742,
+            -0.052466185973158996
+          ],
+          "first_collision_steps": [
+            null,
+            null,
+            null
+          ],
+          "max_affine_violation": 1.2939952928614495e-16,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            1.2797056716452964,
+            2.100884067391984,
+            0.15096831917598985
+          ],
+          "minimum_smooth_cbf_values": [
+            1.1221322469709325,
+            1.9245496800864583,
+            1.20050262988336e-06
+          ]
+        },
+        "hardnet": {
+          "collisions": [
+            true,
+            false,
+            true
+          ],
+          "final_goal_distance": 2.888509436948519,
+          "final_state": [
+            2.875996728616192,
+            -0.2685695148925334,
+            -0.6203497688798034
+          ],
+          "first_collision_steps": [
+            54,
+            null,
+            39
+          ],
+          "max_affine_violation": 1.9527903967209412,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            -0.27984200355212374,
+            1.5118942243722642,
+            -0.12868127844107402
+          ],
+          "minimum_smooth_cbf_values": [
+            -0.32375199740178007,
+            1.3928382920293783,
+            -0.21216293467173797
+          ]
+        }
+      },
+      {
+        "caffnet": {
+          "collisions": [
+            false,
+            false,
+            false
+          ],
+          "final_goal_distance": 3.0938056297855776,
+          "final_state": [
+            -3.091875210319389,
+            0.10927469380130742,
+            -0.052466185973158996
+          ],
+          "first_collision_steps": [
+            null,
+            null,
+            null
+          ],
+          "max_affine_violation": 1.2939952928614495e-16,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            1.2797056716452964,
+            2.100884067391984,
+            0.15096831917598985
+          ],
+          "minimum_smooth_cbf_values": [
+            1.1221322469709325,
+            1.9245496800864583,
+            1.20050262988336e-06
+          ]
+        },
+        "hardnet": {
+          "collisions": [
+            true,
+            false,
+            true
+          ],
+          "final_goal_distance": 2.8885094369485182,
+          "final_state": [
+            2.8759967286161916,
+            -0.2685695148925335,
+            -0.620349768879803
+          ],
+          "first_collision_steps": [
+            54,
+            null,
+            39
+          ],
+          "max_affine_violation": 1.952790396720941,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            -0.27984200355212385,
+            1.5118942243722642,
+            -0.12868127844107402
+          ],
+          "minimum_smooth_cbf_values": [
+            -0.32375199740178007,
+            1.3928382920293783,
+            -0.21216293467173797
+          ]
+        }
+      },
+      {
+        "caffnet": {
+          "collisions": [
+            false,
+            false,
+            false
+          ],
+          "final_goal_distance": 3.0938056297855776,
+          "final_state": [
+            -3.091875210319389,
+            0.10927469380130742,
+            -0.052466185973158996
+          ],
+          "first_collision_steps": [
+            null,
+            null,
+            null
+          ],
+          "max_affine_violation": 1.2939952928614495e-16,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            1.2797056716452964,
+            2.100884067391984,
+            0.15096831917598985
+          ],
+          "minimum_smooth_cbf_values": [
+            1.1221322469709325,
+            1.9245496800864583,
+            1.20050262988336e-06
+          ]
+        },
+        "hardnet": {
+          "collisions": [
+            true,
+            false,
+            true
+          ],
+          "final_goal_distance": 2.8885094369485182,
+          "final_state": [
+            2.8759967286161916,
+            -0.2685695148925335,
+            -0.6203497688798034
+          ],
+          "first_collision_steps": [
+            54,
+            null,
+            39
+          ],
+          "max_affine_violation": 1.9527903967209408,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            -0.27984200355212374,
+            1.5118942243722642,
+            -0.12868127844107402
+          ],
+          "minimum_smooth_cbf_values": [
+            -0.32375199740178007,
+            1.3928382920293783,
+            -0.21216293467173797
+          ]
+        }
+      },
+      {
+        "caffnet": {
+          "collisions": [
+            false,
+            false,
+            false
+          ],
+          "final_goal_distance": 3.0938056297855776,
+          "final_state": [
+            -3.091875210319389,
+            0.10927469380130742,
+            -0.052466185973158996
+          ],
+          "first_collision_steps": [
+            null,
+            null,
+            null
+          ],
+          "max_affine_violation": 1.2939952928614495e-16,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            1.2797056716452964,
+            2.100884067391984,
+            0.15096831917598985
+          ],
+          "minimum_smooth_cbf_values": [
+            1.1221322469709325,
+            1.9245496800864583,
+            1.20050262988336e-06
+          ]
+        },
+        "hardnet": {
+          "collisions": [
+            true,
+            false,
+            true
+          ],
+          "final_goal_distance": 2.8885094369485182,
+          "final_state": [
+            2.8759967286161916,
+            -0.26856951489253356,
+            -0.6203497688798034
+          ],
+          "first_collision_steps": [
+            54,
+            null,
+            39
+          ],
+          "max_affine_violation": 1.9527903967209408,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            -0.27984200355212374,
+            1.5118942243722642,
+            -0.12868127844107402
+          ],
+          "minimum_smooth_cbf_values": [
+            -0.32375199740178007,
+            1.3928382920293783,
+            -0.21216293467173797
+          ]
+        }
+      },
+      {
+        "caffnet": {
+          "collisions": [
+            false,
+            false,
+            false
+          ],
+          "final_goal_distance": 3.0938056297855776,
+          "final_state": [
+            -3.091875210319389,
+            0.10927469380130742,
+            -0.052466185973158996
+          ],
+          "first_collision_steps": [
+            null,
+            null,
+            null
+          ],
+          "max_affine_violation": 1.2939952928614495e-16,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            1.2797056716452964,
+            2.100884067391984,
+            0.15096831917598985
+          ],
+          "minimum_smooth_cbf_values": [
+            1.1221322469709325,
+            1.9245496800864583,
+            1.20050262988336e-06
+          ]
+        },
+        "hardnet": {
+          "collisions": [
+            true,
+            false,
+            true
+          ],
+          "final_goal_distance": 2.8885094369485182,
+          "final_state": [
+            2.8759967286161916,
+            -0.2685695148925334,
+            -0.620349768879803
+          ],
+          "first_collision_steps": [
+            54,
+            null,
+            39
+          ],
+          "max_affine_violation": 1.9527903967209406,
+          "max_control_bound_violation": 0.0,
+          "minimum_polygon_margins": [
+            -0.27984200355212374,
+            1.5118942243722642,
+            -0.12868127844107402
+          ],
+          "minimum_smooth_cbf_values": [
+            -0.32375199740178007,
+            1.3928382920293783,
+            -0.21216293467173797
+          ]
+        }
+      }
+    ]
+  },
+  "attempt_3_initial_state_neighborhood": {
+    "caffnet_collision_count": 0,
+    "cases": 27,
+    "hardnet_collision_count": 27
+  },
+  "audit": "CAffNet Section 4.3 exact-task named HardNet-Aff layer audit",
+  "checks": {
+    "dropping_obstacle_rows_causes_collision": true,
+    "float32_preserves_outcome": true,
+    "neighborhood_caffnet_safe_all": true,
+    "neighborhood_hardnet_collides_all": true,
+    "paper_x0_caffnet_affine_feasible": true,
+    "paper_x0_caffnet_collision_free": true,
+    "paper_x0_hardnet_collides_o1_o3": true,
+    "paper_x0_hardnet_infeasible": true,
+    "row_permutations_preserve_outcome": true,
+    "violated_rows_ablation_removes_collision": true
+  },
+  "fail_sensitive_controls": {
+    "caffnet_without_obstacle_rows": {
+      "collisions": [
+        true,
+        false,
+        true
+      ],
+      "final_goal_distance": 1.0033733209355338,
+      "final_state": [
+        0.9997910683056596,
+        -0.08471033526925528,
+        -0.24475705038755402
+      ],
+      "first_collision_steps": [
+        53,
+        null,
+        38
+      ],
+      "max_affine_violation": 0.803413187430656,
+      "max_control_bound_violation": 0.0,
+      "minimum_polygon_margins": [
+        -0.27316924088480643,
+        1.508571213081649,
+        -0.12519019893491157
+      ],
+      "minimum_smooth_cbf_values": [
+        -0.3224899031118822,
+        1.3966893177333644,
+        -0.21176318362243163
+      ]
+    },
+    "hardnet_violated_rows_only": {
+      "collisions": [
+        false,
+        false,
+        false
+      ],
+      "final_goal_distance": 3.0938056297855776,
+      "final_state": [
+        -3.091875210319389,
+        0.10927469380130742,
+        -0.052466185973158996
+      ],
+      "first_collision_steps": [
+        null,
+        null,
+        null
+      ],
+      "max_affine_violation": 1.2939952928614495e-16,
+      "max_control_bound_violation": 0.0,
+      "minimum_polygon_margins": [
+        1.2797056716452964,
+        2.100884067391984,
+        0.15096831917598985
+      ],
+      "minimum_smooth_cbf_values": [
+        1.1221322469709325,
+        1.9245496800864583,
+        1.20050262988336e-06
+      ]
+    }
+  },
+  "paper_parameters": {
+    "alpha": "alpha(h)=h",
+    "constraint_rows": 13,
+    "dt": 0.1,
+    "goal": [
+      0.0,
+      0.0
+    ],
+    "initial_state": [
+      -4.5,
+      0.0,
+      0.5
+    ],
+    "kappa": 10.0,
+    "obstacle_edge_counts": [
+      5,
+      6,
+      5
+    ],
+    "steps": 150
+  },
+  "scope": "zero learned correction; isolates enforcement layer and does not reconstruct trained weights",
+  "sources": {
+    "caffnet_ar5iv": "https://ar5iv.labs.arxiv.org/html/2605.24437",
+    "hardnet_aff_py_sha256": "7fb545ba991719d89cca1553bd4aef824a416ea2ad07cf97e54565c405586f1b",
+    "hardnet_commit": "4f3ebe496c4081489c486e2711f25697a4c312fa",
+    "hardnet_official_code": "https://github.com/azizanlab/hardnet/blob/4f3ebe496c4081489c486e2711f25697a4c312fa/hardnet_aff.py",
+    "source_scope_note": "Official HardNet's bundled CBF dataset is a different five-state, acceleration-controlled task; only its published enforcement layer is used here."
+  }
+}

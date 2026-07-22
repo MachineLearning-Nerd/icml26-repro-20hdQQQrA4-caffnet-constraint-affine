@@ -12,7 +12,7 @@
     "icml2026-repro",
     "paper-20hdQQQrA4"
   ],
-  "updated_at": "2026-07-22T16:15:00+00:00",
+  "updated_at": "2026-07-22T17:19:18+00:00",
   "root": {
     "slug": "index",
     "title": "Repro - CAffNet Constraint-Affine NN (20hdQQQrA4)",
@@ -55,6 +55,12 @@
         "children": []
       },
       {
+        "slug": "claim-hardnet-unicycle-control",
+        "title": "Claim 5 — named HardNet baseline on the paper's unicycle task",
+        "file": "pages/claim-hardnet-unicycle-control/page.md",
+        "children": []
+      },
+      {
         "slug": "claim-theorem35-exact-bound",
         "title": "Theorem 3.5 — exact universal-approximation bound",
         "file": "pages/claim-theorem35-exact-bound/page.md",
@@ -63,5 +69,5 @@
     ]
   },
   "agent_view_tokens": 1368,
-  "revision": "1784621191277236705"
+  "revision": "1784740758000"
 }
